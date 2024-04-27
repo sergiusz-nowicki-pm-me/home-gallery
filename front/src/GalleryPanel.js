@@ -6,13 +6,16 @@ import Gallery from "react-photo-gallery";
 
 export function GalleryPanel({ gallery_uuid, clearSelected }) {
   const [loading, setLoading] = useState(true);
-  const [previews, setPreviews] = useState([]);
+  const [path, setPath] = useState("");
   const [photos, setPhotos] = useState([]);
+  const [previews, setPreviews] = useState([]);
 
   useEffect(() => {
     setLoading(true);
     gallery(gallery_uuid)
       .then((v) => {
+        setPath(v.path);
+
         const ids = Object.keys(v.files)
         .sort((a, b) => {
           const name1 = v.files[a].path.replace(/^.*[\\/]/, '')
@@ -55,6 +58,7 @@ export function GalleryPanel({ gallery_uuid, clearSelected }) {
   return <div>
     <div className="Gallery-panel-toolbar">
       <button onClick={() => clearSelected()}>Zamknij</button>
+      <div>{path}</div>
     </div>
     {/* <div className="Gallery-panel-main"> */}
     {loading

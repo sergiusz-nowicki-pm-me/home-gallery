@@ -44,3 +44,9 @@ def image_get_thumb(gallery_uuid, uuid):
 def image_get_first_thumb(gallery_uuid):
     path = pocol.get_gallery(gallery_uuid).get_firts_thumb_path()
     return send_file(path)
+
+
+@app.route("/gallery/tag/add/<gallery_uuid>/<type>/<name>")
+def gallery_tag_add(gallery_uuid, type, name):
+    g = pocol.get_gallery(gallery_uuid)
+    return "ok"
