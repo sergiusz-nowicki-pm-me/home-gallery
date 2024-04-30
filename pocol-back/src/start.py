@@ -1,13 +1,15 @@
-from flask import Flask, send_file
-from flask_cors import CORS
+
 import logging
 from pocol import Pocol
 
-app = Flask(__name__)
-CORS(app)
 
-pocol = Pocol("y:\\Референсы\\photo")
-pocol.init()
+
+
+
+rest_api.config_endpoints.prepare()
+
+# pocol = Pocol("y:\\Референсы\\photo\\!HollyRandall\\")
+# pocol.init()
 logger = logging.getLogger("main")
 ConsoleOutputHandler = logging.StreamHandler()
 logger.addHandler(ConsoleOutputHandler)
@@ -16,6 +18,9 @@ logger.addHandler(ConsoleOutputHandler)
 @app.route("/")
 def index():
     return "POCOL-BACK"
+
+
+
 
     
 @app.route("/list-all-galleries")

@@ -1,1 +1,1 @@
-python -m flask --app src\start run --debug --port 8081
+python -m flask --app src\rest_api\start run --debug --port 8081
