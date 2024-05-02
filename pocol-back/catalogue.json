@@ -1,0 +1,21 @@
+{
+  "categories": {
+    "model": {
+      "multiplicity": "0",
+      "objects": []
+    },
+    "solo": {
+      "multiplicity": "0..*",
+      "objects": [],
+      "parent": "tags"
+    },
+    "studio": {
+      "multiplicity": "0",
+      "objects": []
+    },
+    "tags": {
+      "multiplicity": "0",
+      "objects": []
+    }
+  }
+}

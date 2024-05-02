@@ -6,7 +6,7 @@ class Gallery:
     def __init__(self, config):
         self.config = config
         self.branches = []
-        self.config.addRootChangeListener(lambda e, **kwargs: self.__configChanged__(e, **kwargs))
+        self.config.addBranchChangeListener(lambda e, **kwargs: self.__configChanged__(e, **kwargs))
        
         
     def __configChanged__(self, evn_name, **kwargs):

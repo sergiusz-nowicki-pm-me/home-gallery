@@ -1,9 +1,7 @@
-from pocol_core.config import BranchExists, BranchNotExists, BranchPathNotExists
 from pocol_core.pocol import Pocol
 from flask import request
 
 def prepare(app):
-    
     
     @app.route("/query/get-matching-image-sets")
     def get_matching_image_sets():

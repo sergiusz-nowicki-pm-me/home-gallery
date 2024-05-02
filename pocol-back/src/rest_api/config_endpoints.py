@@ -4,7 +4,6 @@ from flask import request
 
 def prepare(app):
     
-    
     @app.route("/config/get-branches")
     def config_get_branches():
         return {"status": "ok", "data": Pocol().getConfig().getBranches()}

@@ -33,18 +33,18 @@ class Config:
             if "branches" in config:
                 self.branches = config["branches"]
                 for b in self.branches:
-                    self.__fireRootChange__(EVT_BRANCH_ADD, path=b)
+                    self.__fireBranchChange__(EVT_BRANCH_ADD, path=b)
                 
                 
-    def addRootChangeListener(self, listener):
+    def addBranchChangeListener(self, listener):
         if not callable(listener):
-            raise Exception("Root change listener must be callable")
+            raise Exception("Branch change listener must be callable")
         
         if listener not in self.root_change_listeners:
             self.root_change_listeners.append(listener)
             
             
-    def __fireRootChange__(self, evt_name, **kwargs):
+    def __fireBranchChange__(self, evt_name, **kwargs):
         for l in self.root_change_listeners:
             l(evt_name, **kwargs)
         
@@ -65,7 +65,7 @@ class Config:
             
         self.branches.append(path)
         self.__dump__()
-        self.__fireRootChange__(EVT_BRANCH_ADD, path=path)
+        self.__fireBranchChange__(EVT_BRANCH_ADD, path=path)
         return self.branches
 
     
@@ -74,5 +74,5 @@ class Config:
             raise BranchNotExists()
         self.branches.remove(path)
         self.__dump__()
-        self.__fireRootChange__("BRANCH REMOVE", path=path)
+        self.__fireBranchChange__("BRANCH REMOVE", path=path)
         return self.branches
