@@ -54,9 +54,9 @@ def process_file(dir_name, file_name, options):
     
 def process_dir(dir_name, options):
     print('processing dir "' + dir_name + '"')
-    for file_name in os.listdir(dir_name):
-        if os.path.isdir(os.path.join(dir_name, file_name)):
-            process_file(dir_name, file_name, options)
+    for name in os.listdir(dir_name):
+        if os.path.isdir(os.path.join(dir_name, name)):
+            process_file(dir_name, name, options)
             
             
             
@@ -67,8 +67,7 @@ def process_all(dir_name):
         print('starting recursive processing')
         process_dir(dir_name, options)
         for subdir_name in os.listdir(dir_name):
-            if os.path.isdir(os.path.join(dir_name, subdir_name)):
-                process_all(os.path.join(dir_name, subdir_name))
+            process_all(os.path.join(dir_name, subdir_name))
     else:
         process_dir(dir_name, options)
         

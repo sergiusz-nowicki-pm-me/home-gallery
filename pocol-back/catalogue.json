@@ -1,21 +1,81 @@
 {
   "categories": {
-    "model": {
-      "multiplicity": "0",
-      "objects": []
-    },
-    "solo": {
-      "multiplicity": "0..*",
+    "AssholeFever": {
       "objects": [],
-      "parent": "tags"
+      "parents": []
+    },
+    "ClubSandy": {
+      "objects": [],
+      "parents": [
+        "studio"
+      ]
+    },
+    "FisterTwister": {
+      "objects": [],
+      "parents": []
+    },
+    "JohnBloomberg": {
+      "objects": [],
+      "parents": []
+    },
+    "JoyMii": {
+      "objects": [],
+      "parents": []
+    },
+    "Lexi Dona": {
+      "objects": [],
+      "parents": [
+        "model"
+      ]
+    },
+    "PixAndVideo": {
+      "objects": [],
+      "parents": []
+    },
+    "SexArt": {
+      "objects": [],
+      "parents": []
+    },
+    "SinfulXXX": {
+      "objects": [],
+      "parents": []
+    },
+    "TeachMeFisting": {
+      "objects": [],
+      "parents": [
+        "studio"
+      ]
+    },
+    "action": {
+      "objects": [],
+      "parents": []
+    },
+    "anal": {
+      "objects": [],
+      "parents": [
+        "action"
+      ]
+    },
+    "anal fisting": {
+      "objects": [],
+      "parents": [
+        "anal",
+        "fisting"
+      ]
+    },
+    "fisting": {
+      "objects": [],
+      "parents": [
+        "action"
+      ]
+    },
+    "model": {
+      "objects": [],
+      "parents": []
     },
     "studio": {
-      "multiplicity": "0",
-      "objects": []
-    },
-    "tags": {
-      "multiplicity": "0",
-      "objects": []
+      "objects": [],
+      "parents": []
     }
   }
 }
