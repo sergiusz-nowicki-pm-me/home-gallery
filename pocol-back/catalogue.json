@@ -63,13 +63,42 @@
         "fisting"
       ]
     },
+    "anal sex": {
+      "objects": [],
+      "parents": [
+        "penetration",
+        "anal"
+      ]
+    },
+    "double anal": {
+      "objects": [],
+      "parents": [
+        "anal sex"
+      ]
+    },
+    "double anal fisting": {
+      "objects": [],
+      "parents": [
+        "anal fisting",
+        "double fisting"
+      ]
+    },
+    "double fisting": {
+      "objects": [],
+      "parents": []
+    },
     "fisting": {
       "objects": [],
       "parents": [
-        "action"
+        "action",
+        "penetration"
       ]
     },
     "model": {
+      "objects": [],
+      "parents": []
+    },
+    "penetration": {
       "objects": [],
       "parents": []
     },

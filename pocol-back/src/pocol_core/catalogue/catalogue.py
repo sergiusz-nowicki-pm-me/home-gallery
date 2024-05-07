@@ -45,6 +45,7 @@ class Catalogue:
         self.dump()
     
     def getCategory(self, name):
+        print(name)
         if name in self.data[CATEGORIES]:
             return CatalogueCategory(self, name)
         else:
@@ -75,8 +76,9 @@ class CatalogueCategory:
     def getAllParents(self):
         parent_names = list(self.catalogue.data[CATEGORIES][self.name][PARENTS])
         for parent_name in parent_names:
-            parent_names.extend(self.catalogue.getCategory(parent_name).getAllParents())
-        return parent_names
+            next_parents_names = [c.getName() for c in self.catalogue.getCategory(parent_name).getAllParents()]
+            parent_names.extend([n for n in next_parents_names if n not in parent_names])
+        return [CatalogueCategory(self.catalogue, c) for c in parent_names]
     
     def addParent(self, parent_name):
         parent_names = self.getAllParents()

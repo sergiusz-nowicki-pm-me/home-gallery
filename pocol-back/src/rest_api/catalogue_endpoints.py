@@ -2,6 +2,8 @@ from pocol_core.catalogue import CategoryAlreadyExists
 from pocol_core.pocol import Pocol
 from flask import request
 
+from .utils import getRequestParam, ParamNotFound
+
 def prepare(app):
     
     @app.route("/catalogue/category/create")
@@ -19,17 +21,13 @@ def prepare(app):
         
     @app.route("/catalogue/category/add-parent")
     def category_add_parent():
-        if "name" not in request.args:
-            return {"status": "error", "description": "Category name not found"}
-        name = request.args.get("name", type=str)
-        
-        if "parent-name" not in request.args:
-            return {"status": "error", "description": "Parent name not found"}
-        parent_name = request.args.get("parent-name", type=str)
-        
         try:
+            name = getRequestParam("name", type=str)
+            parent_name = getRequestParam("parent-name", type=str)
             Pocol().getCatalogue().getCategory(name).addParent(parent_name)
             return {"status": "ok"}
+        except ParamNotFound:
+            return {"startus": "error", "description": "Parameter is missing"}
         except:
             return {"status": "error", "description": ""}
             
@@ -39,12 +37,17 @@ def prepare(app):
 
     @app.route("/catalogue/category/list-subcategories")
     def category_list_subcategories():
-        if "name" not in request.args:
-            return {"status": "error", "description": "Category name not found"}
-        name = request.args.get("name", type=str)
+        try:
+            name = getRequestParam("name", type=str)
+            max_lvl = getRequestParam("max-lvl", default=1, type=int)
+            return [c.getName() for c in Pocol().getCatalogue().getCategory(name).getSubcategories(max_lvl=max_lvl)]
+        except ParamNotFound:
+            return {"startus": "error", "description": "Parameter is missing"}
 
-        max_lvl = 1
-        if "max-lvl" in request.args:
-            max_lvl = request.args.get("max-lvl", type=int)
-
-        return [c.getName() for c in Pocol().getCatalogue().getCategory(name).getSubcategories(max_lvl=max_lvl)]
+    @app.route("/catalogue/category/list-parents")
+    def category_list_parents():
+        try:
+            name = getRequestParam("name", type=str)
+            return [c.getName() for c in Pocol().getCatalogue().getCategory(name).getAllParents()]
+        except ParamNotFound:
+            return {"startus": "error", "description": "Parameter is missing"}
