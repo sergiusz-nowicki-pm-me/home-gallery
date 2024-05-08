@@ -96,6 +96,9 @@ class CatalogueCategory:
                 subs = self.catalogue.getCategory(c.getName()).getSubcategories(max_lvl - 1)
                 result.extend([s for s in subs if s.getName() not in [s.getName() for s in result]])
         return result
+    
+    def assign(self, object_uuid):
+        self.getAllParents()
         
         
 class CatalogueTests(unittest.TestCase):
