@@ -21,5 +21,7 @@ class Branch:
 
     def getMatchingSets(self, name):
         result = {s.getUuid() : s.getName() for s in self.sets if len(fnmatch.filter([s.getName()], name)) > 0}
-        print(result)
         return result
+    
+    def getAllSets(self):
+        return list(self.sets)

@@ -51,3 +51,12 @@ def prepare(app):
             return [c.getName() for c in Pocol().getCatalogue().getCategory(name).getAllParents()]
         except ParamNotFound:
             return {"startus": "error", "description": "Parameter is missing"}
+
+    @app.route("/catalogue/object/assign-category")
+    def assign_category():
+        try:
+            object_uuid = getRequestParam("uuid", type=str)
+            category_name = getRequestParam("category-name", type=str)
+            Pocol().getCatalogue().getCategory(category_name).assign(object_uuid)
+        except ParamNotFound:
+            return {"startus": "error", "description": "Parameter is missing"}

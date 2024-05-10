@@ -16,7 +16,6 @@ class ImageSet:
         self.metadata = {}
         self.__loadMetadata__()
         
-        
     def __loadMetadata__(self):
         metadata_file = os.path.join(self.path, METADATA_FILE_NAME)
         if not os.path.exists(metadata_file):
@@ -36,16 +35,19 @@ class ImageSet:
             with open(metadata_file, "r") as f:
                 self.metadata = json.load(f)
             
-            
     def __dumpMetadata__(self):
         metadata_file = os.path.join(self.path, METADATA_FILE_NAME)
         with open(metadata_file, "w") as f:
             json.dump(self.metadata, f)
     
-    
     def getName(self):
         return self.name
     
-    
     def getUuid(self):
         return self.metadata["uuid"]
+    
+    def getFiles(self):
+        return self.metadata["files"]
+    
+    def getFile(self, no):
+        return os.path.join(self.path, self.metadata["files"][no])
