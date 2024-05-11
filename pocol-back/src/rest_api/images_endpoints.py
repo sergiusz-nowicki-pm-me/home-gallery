@@ -4,7 +4,6 @@ from pocol_core.pocol import Pocol
 def prepare(app):
     @app.route("/image/<gallery_id>/<file_no>")
     def get_image(gallery_id, file_no):
-        print("test")
         set = Pocol().getGallery().getImageSet(gallery_id)
         if set != None:
             return send_file(set.getFile(file_no))

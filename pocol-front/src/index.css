@@ -52,6 +52,10 @@ body {
     align-content: center;
 }
 
+img {
+    max-height: 256px;
+}
+
 .Main-layout {
     display: flex;
     flex-direction: row;

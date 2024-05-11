@@ -1,5 +1,5 @@
 from pocol_core.pocol import Pocol
-# from flask import request
+from flask import request
 
 def prepare(app):
     @app.route("/query/get-matching-image-sets")
